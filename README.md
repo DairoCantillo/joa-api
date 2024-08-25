@@ -21,8 +21,8 @@ This API allows you to shorten URLs, manage users, and track visits. It is built
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/your-repository.git
-   cd your-repository
+   git clone https://github.com/DairoCantillo/joa-api.git
+   cd joa-api
    ```
 
 2. Install dependencies:

@@ -1,25 +1,18 @@
 import { Router } from "express";
+import {
+  createVisit,
+  deleteVisit,
+  getVisit,
+  getVisits,
+  updateVisit,
+} from "../controllers/visits.controller";
 
 const router = Router();
 
-router.get("/visits", (_, res) => {
-  res.send("visits route");
-});
-
-router.post("/visits/:id", (_, res) => {
-  res.send("visits route");
-});
-
-router.post("/visits", (_, res) => {
-  res.send("visits route");
-});
-
-router.put("/visits", (_, res) => {
-  res.send("visits route");
-});
-
-router.delete("/visits", (_, res) => {
-  res.send("visits route");
-});
+router.get("/visits", getVisits);
+router.post("/visits", createVisit);
+router.put("/visits", updateVisit);
+router.delete("/visits", deleteVisit);
+router.get("/visits/:id", getVisit);
 
 export default router;

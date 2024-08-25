@@ -2,11 +2,12 @@
   "name": "joa-api",
   "version": "1.0.0",
   "description": "Esta es una api para el proyecto de acortador",
-  "main": "index.js",
-  "type": "module",
+  "main": "src/index.ts",
+  "type": "commonjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node src/index.ts --watch"
+    "tsc": "tsc",
+    "start": "node build/index.js",
+    "dev": "ts-node-dev src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,11 @@
   },
   "homepage": "https://github.com/DairoCantillo/joa-api#readme",
   "devDependencies": {
-    "prisma": "^5.18.0"
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.5.0",
+    "prisma": "^5.18.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.5.4"
   },
   "dependencies": {
     "@prisma/client": "^5.18.0",

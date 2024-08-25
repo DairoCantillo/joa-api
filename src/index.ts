@@ -1,13 +1,13 @@
 import express from "express";
+import { ShortUrl, users, visits } from "./routers";
 
-const app = express();
 const port = 3000;
+const app = express();
 
-import { Response } from "express";
-
-app.get("/", (_req, res: Response) => {
-  res.send("Hello World!");
-});
+app.use(express.json());
+app.use("/api", ShortUrl);
+app.use("/api", users);
+app.use("/api", visits);
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

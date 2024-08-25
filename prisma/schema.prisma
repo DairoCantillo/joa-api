@@ -38,6 +38,6 @@ model visit {
   city      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  userId    String?
-  shortUrlRef  ShortUrl? @relation(fields: [userId], references: [id])
+  shortUrlId    String?
+  shortUrlRef  ShortUrl? @relation(fields: [shortUrlId], references: [id])
 }

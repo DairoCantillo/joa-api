@@ -1,16 +1,6 @@
 import { Request, Response } from "express";
 import prismaClient from "../models/prismaClient";
 
-export const getUsers = async (_req: Request, res: Response) => {
-  try {
-    const users = await prismaClient.user.findMany();
-    res.status(200).json(users);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Internal Server Error");
-  }
-};
-
 export const createUser = async (req: Request, res: Response) => {
   try {
     const newUser = await prismaClient.user.create({

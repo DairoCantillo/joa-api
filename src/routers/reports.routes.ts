@@ -8,9 +8,10 @@ import {
 
 const router = Router();
 
+// Define routes with specific IDs for update and delete operations
 router.get("/reports", getReports);
 router.post("/reports", createReport);
-router.put("/reports", updateReport);
-router.delete("/reports", deleteReport);
+router.put("/reports/:id", updateReport);
+router.delete("/reports/:id", deleteReport);
 
 export default router;

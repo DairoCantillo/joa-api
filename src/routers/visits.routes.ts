@@ -12,7 +12,7 @@ const router = Router();
 router.get("/visits", getVisits);
 router.post("/visits", createVisit);
 router.put("/visits", updateVisit);
-router.delete("/visits", deleteVisit);
+router.delete("/visits/:id", deleteVisit);
 router.get("/visits/:id", getVisit);
 
 export default router;

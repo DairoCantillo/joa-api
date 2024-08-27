@@ -3,29 +3,10 @@ import bcrypt from "bcrypt";
 import prismaClient from "../models/prismaClient";
 import config from "../config";
 
-export const createUser = async (req: Request, res: Response) => {
-  try {
-    const { password, email, userName } = req.body;
-    const hashedPassword = await bcrypt.hash(password, config.bcryptSaltRounds);
-
-    const newUser = await prismaClient.user.create({
-      data: {
-        password: hashedPassword,
-        email,
-        userName,
-      },
-    });
-    res.status(201).json(newUser);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Internal Server Error");
-  }
-};
-
 export const updateUser = async (req: Request, res: Response) => {
   try {
     const updatedUser = await prismaClient.user.update({
-      where: { id: req.body.id },
+      where: { id: req.body.user.id },
       data: req.body,
     });
     res.status(200).json(updatedUser);
@@ -40,7 +21,7 @@ export const updateUserPassword = async (req: Request, res: Response) => {
     const { password } = req.body;
     const hashedPassword = await bcrypt.hash(password, config.bcryptSaltRounds);
     const updatedUser = await prismaClient.user.update({
-      where: { id: req.body.id },
+      where: { id: req.body.user.id },
       data: {
         password: hashedPassword,
       },
@@ -55,7 +36,7 @@ export const updateUserPassword = async (req: Request, res: Response) => {
 export const deleteUser = async (req: Request, res: Response) => {
   try {
     const userDeleted = await prismaClient.user.delete({
-      where: { id: req.body.id },
+      where: { id: req.body.user.id },
     });
     if (userDeleted) {
       const { password, ...userWithoutPassword } = userDeleted;
@@ -71,8 +52,10 @@ export const deleteUser = async (req: Request, res: Response) => {
 
 export const getUser = async (req: Request, res: Response) => {
   try {
+    console.log("body", req.body);
+    console.log("params", req.params);
     const user = await prismaClient.user.findUnique({
-      where: { id: req.params.id },
+      where: { id: req.body.user.id },
     });
     if (user) {
       const { password, ...userWithoutPassword } = user;

@@ -1,16 +1,15 @@
-import { Router } from "express";
+import { Router, RequestHandler } from "express";
 import {
-  createUser,
   deleteUser,
   getUser,
   updateUser,
 } from "../controllers/users.controller";
+import { authenticateJWT } from "../middlewares/auth.middleware";
 
 const router = Router();
 
-router.post("/users", createUser);
-router.put("/users", updateUser);
-router.delete("/users/:id", deleteUser);
-router.get("/users/:id", getUser);
+router.put("/users", authenticateJWT as RequestHandler, updateUser);
+router.delete("/users", authenticateJWT as RequestHandler, deleteUser);
+router.get("/users", authenticateJWT as RequestHandler, getUser);
 
 export default router;

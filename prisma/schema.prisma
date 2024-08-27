@@ -19,6 +19,7 @@ model ShortUrl {
   updatedAt DateTime @updatedAt
   visits    visit[]
   userId    String?
+  report    report[]
   user      User?     @relation(fields: [userId], references: [id])
 }
 model User {
@@ -32,6 +33,17 @@ model User {
 }
 
 model visit {
+  id        String   @id @default(cuid())
+  shortUrl  String
+  country   String
+  city      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  shortUrlId    String?
+  shortUrlRef  ShortUrl? @relation(fields: [shortUrlId], references: [id])
+}
+
+model report {
   id        String   @id @default(cuid())
   shortUrl  String
   country   String

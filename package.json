@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "Esta es una api para el proyecto de acortador",
   "main": "src/index.ts",
-  "type": "commonjs",
   "scripts": {
-    "tsc": "tsc",
+    "build": "tsc",
     "start": "node build/index.js",
     "dev": "ts-node-dev src/index.ts",
-    "generate": "prisma generate"
+    "generate": "prisma generate",
+    "migrate": "prisma migrate",
+    "studio": "prisma studio"
   },
   "repository": {
     "type": "git",
@@ -25,7 +26,8 @@
     "@types/node": "^22.5.0",
     "prisma": "^5.18.0",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "zod": "^3.23.8"
   },
   "dependencies": {
     "@prisma/client": "^5.18.0",

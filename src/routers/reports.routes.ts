@@ -3,7 +3,7 @@ import {
   getReports,
   createReport,
   updateReport,
-  deleteReport
+  deleteReport,
 } from '../controllers/reports.controller';
 
 const router = Router();

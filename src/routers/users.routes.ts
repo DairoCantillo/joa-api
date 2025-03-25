@@ -2,7 +2,7 @@ import { Router, RequestHandler } from 'express';
 import {
   deleteUser,
   getUser,
-  updateUser
+  updateUser,
 } from '../controllers/users.controller';
 import { authenticateJWT } from '../middlewares/auth.middleware';
 

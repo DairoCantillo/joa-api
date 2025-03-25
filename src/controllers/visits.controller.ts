@@ -14,7 +14,7 @@ export const getVisits = async (_req: Request, res: Response) => {
 export const createVisit = async (req: Request, res: Response) => {
   try {
     const newVisit = await prismaClient.visit.create({
-      data: req.body
+      data: req.body,
     });
     res.status(201).json(newVisit);
   } catch (error) {
@@ -27,7 +27,7 @@ export const updateVisit = async (req: Request, res: Response) => {
   try {
     const updatedVisit = await prismaClient.visit.update({
       where: { id: req.body.id },
-      data: req.body
+      data: req.body,
     });
     res.status(200).json(updatedVisit);
   } catch (error) {
@@ -39,7 +39,7 @@ export const updateVisit = async (req: Request, res: Response) => {
 export const deleteVisit = async (req: Request, res: Response) => {
   try {
     const deletedVisit = await prismaClient.visit.delete({
-      where: { id: req.body.id }
+      where: { id: req.body.id },
     });
     res.status(200).json(deletedVisit);
   } catch (error) {
@@ -51,7 +51,7 @@ export const deleteVisit = async (req: Request, res: Response) => {
 export const getVisit = async (req: Request, res: Response) => {
   try {
     const visit = await prismaClient.visit.findUnique({
-      where: { id: req.params.id }
+      where: { id: req.params.id },
     });
     res.status(200).json(visit);
   } catch (error) {

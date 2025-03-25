@@ -4,7 +4,7 @@ import {
   deleteVisit,
   getVisit,
   getVisits,
-  updateVisit
+  updateVisit,
 } from '../controllers/visits.controller';
 
 const router = Router();

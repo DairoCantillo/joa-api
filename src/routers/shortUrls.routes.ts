@@ -4,7 +4,7 @@ import {
   deleteShortUrl,
   getShortUrl,
   getShortUrls,
-  updateShortUrl
+  updateShortUrl,
 } from '../controllers/shortUrls.controller';
 import validate from '../middlewares/validate.middelware';
 import ShortUrlsSchemas from '../schemas/shortUrls.schemas';
@@ -14,7 +14,7 @@ router.get('/shorturls', getShortUrls);
 router.post(
   '/shorturls',
   validate(ShortUrlsSchemas.createShortUrlSchema),
-  createShortUrl
+  createShortUrl,
 );
 router.put('/shorturls/:id', updateShortUrl);
 router.delete('/shorturls/:id', deleteShortUrl);

@@ -14,7 +14,7 @@ export const getReports = async (_req: Request, res: Response) => {
 export const createReport = async (req: Request, res: Response) => {
   try {
     const newReport = await prismaClient.report.create({
-      data: req.body
+      data: req.body,
     });
     res.status(201).json(newReport);
   } catch (error) {
@@ -27,7 +27,7 @@ export const updateReport = async (req: Request, res: Response) => {
   try {
     const updatedReport = await prismaClient.report.update({
       where: { id: req.body.id },
-      data: req.body
+      data: req.body,
     });
     res.status(200).json(updatedReport);
   } catch (error) {
@@ -39,7 +39,7 @@ export const updateReport = async (req: Request, res: Response) => {
 export const deleteReport = async (req: Request, res: Response) => {
   try {
     const deletedReport = await prismaClient.report.delete({
-      where: { id: req.body.id }
+      where: { id: req.body.id },
     });
     res.status(200).json(deletedReport);
   } catch (error) {

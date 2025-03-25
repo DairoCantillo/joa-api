@@ -21,7 +21,7 @@ export const login = async (req: Request, res: Response) => {
     const token = jwt.sign(
       { username: user.userName, id: user.id, email: user.email },
       config.secretKey,
-      { expiresIn: '30 minutes' }
+      { expiresIn: '30 minutes' },
     );
 
     return res.json({ token });
@@ -43,8 +43,8 @@ export const register = async (req: Request, res: Response) => {
       data: {
         email,
         password: hashedPassword,
-        userName
-      }
+        userName,
+      },
     });
     const { ...userWithoutPassword } = newUser;
     return res.json(userWithoutPassword);

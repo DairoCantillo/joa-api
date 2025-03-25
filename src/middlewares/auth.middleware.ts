@@ -5,7 +5,7 @@ import config from '../config';
 export const authenticateJWT = (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   const authHeader = req.headers.authorization;
   try {

@@ -1,6 +1,6 @@
 {
   "name": "joa-api",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Esta es una api para el proyecto de acortador",
   "main": "src/index.ts",
   "scripts": {

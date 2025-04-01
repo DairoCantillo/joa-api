@@ -4,6 +4,7 @@ import {
   createReport,
   updateReport,
   deleteReport,
+  getReport,
 } from '../controllers/reports.controller';
 
 const router = Router();
@@ -13,5 +14,6 @@ router.get('/reports', getReports);
 router.post('/reports', createReport);
 router.put('/reports/:id', updateReport);
 router.delete('/reports/:id', deleteReport);
+router.get('/reports/:id', getReport); // Assuming you want to fetch a specific report by ID
 
 export default router;

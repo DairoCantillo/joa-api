@@ -26,7 +26,7 @@ export const createShortUrl = async (req: Request, res: Response) => {
 export const updateShortUrl = async (req: Request, res: Response) => {
   try {
     const updatedShortUrl = await prismaClient.shortUrl.update({
-      where: { id: req.body.id },
+      where: { id: req.params.id },
       data: req.body,
     });
     res.status(200).json(updatedShortUrl);
@@ -39,7 +39,7 @@ export const updateShortUrl = async (req: Request, res: Response) => {
 export const deleteShortUrl = async (req: Request, res: Response) => {
   try {
     const deletedShortUrl = await prismaClient.shortUrl.delete({
-      where: { id: req.body.id },
+      where: { id: req.params.id },
     });
     res.status(200).json(deletedShortUrl);
   } catch (error) {

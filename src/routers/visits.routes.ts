@@ -11,7 +11,7 @@ const router = Router();
 
 router.get('/visits', getVisits);
 router.post('/visits', createVisit);
-router.put('/visits', updateVisit);
+router.put('/visits/:id', updateVisit);
 router.delete('/visits/:id', deleteVisit);
 router.get('/visits/:id', getVisit);
 

@@ -26,7 +26,7 @@ export const createVisit = async (req: Request, res: Response) => {
 export const updateVisit = async (req: Request, res: Response) => {
   try {
     const updatedVisit = await prismaClient.visit.update({
-      where: { id: req.body.id },
+      where: { id: req.params.id },
       data: req.body,
     });
     res.status(200).json(updatedVisit);

@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 import prismaClient from '../models/prismaClient';
 import bcrypt from 'bcrypt';
 import config from '../config';
+import logger from '../utils/logger';
 
 export const login = async (req: Request, res: Response) => {
   const { userName, password } = req.body;
@@ -26,7 +27,7 @@ export const login = async (req: Request, res: Response) => {
 
     return res.json({ token });
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     return res.status(500).json({ message: 'Internal server error' });
   }
 };

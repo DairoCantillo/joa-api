@@ -1,12 +1,13 @@
 import { Request, Response } from 'express';
 import prismaClient from '../models/prismaClient';
+import logger from '../utils/logger';
 
 export const getShortUrls = async (_req: Request, res: Response) => {
   try {
     const shortUrls = await prismaClient.shortUrl.findMany();
     res.status(200).json(shortUrls);
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     res.status(500).send('Internal Server Error');
   }
 };
@@ -18,7 +19,7 @@ export const createShortUrl = async (req: Request, res: Response) => {
     });
     res.status(201).json(newShortUrl);
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     res.status(500).send('Internal Server Error');
   }
 };
@@ -31,7 +32,7 @@ export const updateShortUrl = async (req: Request, res: Response) => {
     });
     res.status(200).json(updatedShortUrl);
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     res.status(500).send('Internal Server Error');
   }
 };
@@ -43,7 +44,7 @@ export const deleteShortUrl = async (req: Request, res: Response) => {
     });
     res.status(200).json(deletedShortUrl);
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     res.status(404).send('Not found');
   }
 };
@@ -55,7 +56,7 @@ export const getShortUrl = async (req: Request, res: Response) => {
     });
     res.status(200).json(shortUrl);
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     res.status(500).send('Internal Server Error');
   }
 };

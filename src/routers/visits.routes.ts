@@ -6,12 +6,18 @@ import {
   getVisits,
   updateVisit,
 } from '../controllers/visits.controller';
+import validate from '../middlewares/validate.middelware';
+import VisitsSchemas from '../schemas/visits.schemas';
 
 const router = Router();
 
 router.get('/visits', getVisits);
-router.post('/visits', createVisit);
-router.put('/visits/:id', updateVisit);
+router.post('/visits', validate(VisitsSchemas.createVisitSchema), createVisit);
+router.put(
+  '/visits/:id',
+  validate(VisitsSchemas.updateVisitSchema),
+  updateVisit,
+);
 router.delete('/visits/:id', deleteVisit);
 router.get('/visits/:id', getVisit);
 

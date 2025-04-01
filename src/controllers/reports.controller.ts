@@ -1,15 +1,17 @@
 import { Request, Response } from 'express';
 import prismaClient from '../models/prismaClient';
+import logger from '../utils/logger';
 
 export const getReports = async (_req: Request, res: Response) => {
   try {
     const reports = await prismaClient.report.findMany();
     res.status(200).json(reports);
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     res.status(500).send('Internal Server Error');
   }
 };
+
 export const getReport = async (req: Request, res: Response) => {
   try {
     const report = await prismaClient.report.findUnique({
@@ -20,7 +22,7 @@ export const getReport = async (req: Request, res: Response) => {
     }
     res.status(200).json(report);
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     res.status(500).send('Internal Server Error');
   }
 };
@@ -32,7 +34,7 @@ export const createReport = async (req: Request, res: Response) => {
     });
     res.status(201).json(newReport);
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     res.status(500).send('Internal Server Error');
   }
 };
@@ -45,7 +47,7 @@ export const updateReport = async (req: Request, res: Response) => {
     });
     res.status(200).json(updatedReport);
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     res.status(500).send('Internal Server Error');
   }
 };
@@ -57,7 +59,7 @@ export const deleteReport = async (req: Request, res: Response) => {
     });
     res.status(200).json(deletedReport);
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     res.status(404).send('Not found');
   }
 };

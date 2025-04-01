@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import config from '../config';
+import logger from '../utils/logger';
 
 export const authenticateJWT = (
   req: Request,
@@ -16,7 +17,7 @@ export const authenticateJWT = (
     }
     next();
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     res.status(401).json({ message: 'Invalid token' });
   }
 };

@@ -52,7 +52,7 @@ export const deleteShortUrl = async (req: Request, res: Response) => {
 export const getShortUrl = async (req: Request, res: Response) => {
   try {
     const shortUrl = await prismaClient.shortUrl.findUnique({
-      where: { id: req.params.id },
+      where: { shortUrl: req.params.id },
     });
     res.status(200).json(shortUrl);
   } catch (error) {
